@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:tetris/piece.dart';
 import 'package:tetris/pixel.dart';
 import 'package:tetris/values.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 // create game board
 List<List<Tetromino?>> gameBoard = List.generate(
@@ -26,9 +27,17 @@ class _GameBoardState extends State<GameBoard> {
   // current tetris piece
   Piece currentPiece = Piece(type: Tetromino.T);
 
+  AudioPlayer audioPlayer = AudioPlayer();
+
+  Future<void> playBackgroundMusic() async {
+    AudioPlayer audioPlayer = AudioPlayer();
+    audioPlayer.play(AssetSource("tetris.m4a"));
+  }
+
   @override
   void initState() {
     super.initState();
+    playBackgroundMusic();
 
     // start game when ap starts
     startGame();
@@ -38,7 +47,7 @@ class _GameBoardState extends State<GameBoard> {
     currentPiece.initializePiece();
 
     // frame refreh rate
-    Duration frameRate = const Duration(milliseconds: 200);
+    Duration frameRate = const Duration(milliseconds: 500);
     gameLoop(frameRate);
   }
 
