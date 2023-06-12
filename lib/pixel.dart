@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 class Pixel extends StatelessWidget {
   final Color color;
-  final String child;
-  const Pixel({super.key, required this.color, required this.child});
+  const Pixel({super.key, required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +12,6 @@ class Pixel extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
       ),
       margin: const EdgeInsets.all(1),
-      child: Center(
-        child: Text(
-          '',
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
     );
   }
 }

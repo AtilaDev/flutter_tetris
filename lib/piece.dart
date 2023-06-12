@@ -148,7 +148,7 @@ class Piece {
               position[1] - rowLength,
               position[1],
               position[1] + rowLength,
-              position[1] + rowLength + 1,
+              position[1] + rowLength - 1,
             ];
             if (piecePositionIsValid(newPosition)) {
               // update position
@@ -161,10 +161,10 @@ class Piece {
           case 1:
             // assign new position
             newPosition = [
-              position[1] - 1,
+              position[1] - rowLength - 1,
               position[1],
+              position[1] - 1,
               position[1] + 1,
-              position[1] + rowLength - 1,
             ];
             if (piecePositionIsValid(newPosition)) {
               // update position
@@ -180,7 +180,7 @@ class Piece {
               position[1] + rowLength,
               position[1],
               position[1] - rowLength,
-              position[1] - rowLength - 1,
+              position[1] - rowLength + 1,
             ];
             if (piecePositionIsValid(newPosition)) {
               // update position
@@ -193,10 +193,10 @@ class Piece {
           case 3:
             // assign new position
             newPosition = [
-              position[1] - rowLength + 1,
-              position[1],
               position[1] + 1,
+              position[1],
               position[1] - 1,
+              position[1] + rowLength + 1,
             ];
             if (piecePositionIsValid(newPosition)) {
               // update position
@@ -241,7 +241,43 @@ class Piece {
               rotationState = (rotationState + 1) % 4;
             }
             break;
+
+          case 2:
+            // assign new position
+            newPosition = [
+              position[1] + 1,
+              position[1],
+              position[1] - 1,
+              position[1] - 2,
+            ];
+            if (piecePositionIsValid(newPosition)) {
+              // update position
+              position = newPosition;
+              // update rotation state
+              rotationState = (rotationState + 1) % 4;
+            }
+            break;
+
+          case 3:
+            // assign new position
+            newPosition = [
+              position[1] + rowLength,
+              position[1],
+              position[1] - rowLength,
+              position[1] - 2 * rowLength,
+            ];
+            if (piecePositionIsValid(newPosition)) {
+              // update position
+              position = newPosition;
+              // update rotation state
+              rotationState = (rotationState + 1) % 4;
+            }
+            break;
         }
+        break;
+
+      case Tetromino.O:
+        // no rotate
         break;
 
       case Tetromino.S:
@@ -263,6 +299,38 @@ class Piece {
             break;
 
           case 1:
+            // assign new position
+            newPosition = [
+              position[1] - rowLength,
+              position[1],
+              position[1] + 1,
+              position[1] + rowLength + 1,
+            ];
+            if (piecePositionIsValid(newPosition)) {
+              // update position
+              position = newPosition;
+              // update rotation state
+              rotationState = (rotationState + 1) % 4;
+            }
+            break;
+
+          case 2:
+            // assign new position
+            newPosition = [
+              position[1],
+              position[1] + 1,
+              position[1] + rowLength - 1,
+              position[1] + rowLength,
+            ];
+            if (piecePositionIsValid(newPosition)) {
+              // update position
+              position = newPosition;
+              // update rotation state
+              rotationState = (rotationState + 1) % 4;
+            }
+            break;
+
+          case 3:
             // assign new position
             newPosition = [
               position[0] - rowLength,
@@ -301,10 +369,42 @@ class Piece {
           case 1:
             // assign new position
             newPosition = [
-              position[1] - 1,
+              position[0] - rowLength + 2,
               position[1],
-              position[1] + 1,
-              position[1] + rowLength - 1,
+              position[2] - rowLength + 1,
+              position[3] - 1,
+            ];
+            if (piecePositionIsValid(newPosition)) {
+              // update position
+              position = newPosition;
+              // update rotation state
+              rotationState = (rotationState + 1) % 4;
+            }
+            break;
+
+          case 2:
+            // assign new position
+            newPosition = [
+              position[0] + rowLength - 2,
+              position[1],
+              position[2] + rowLength - 1,
+              position[3] + 1,
+            ];
+            if (piecePositionIsValid(newPosition)) {
+              // update position
+              position = newPosition;
+              // update rotation state
+              rotationState = (rotationState + 1) % 4;
+            }
+            break;
+
+          case 3:
+            // assign new position
+            newPosition = [
+              position[0] - rowLength + 2,
+              position[1],
+              position[2] - rowLength + 1,
+              position[3] - 1,
             ];
             if (piecePositionIsValid(newPosition)) {
               // update position
@@ -321,10 +421,10 @@ class Piece {
           case 0:
             // get the new position
             newPosition = [
-              position[1] - rowLength,
-              position[1],
-              position[1] + rowLength,
-              position[1] + rowLength + 1,
+              position[2] - rowLength,
+              position[2],
+              position[2] + 1,
+              position[2] + rowLength,
             ];
             if (piecePositionIsValid(newPosition)) {
               // update position
@@ -340,7 +440,7 @@ class Piece {
               position[1] - 1,
               position[1],
               position[1] + 1,
-              position[1] + rowLength - 1,
+              position[1] + rowLength,
             ];
             if (piecePositionIsValid(newPosition)) {
               // update position
@@ -353,10 +453,10 @@ class Piece {
           case 2:
             // assign new position
             newPosition = [
-              position[1] + rowLength,
-              position[1],
               position[1] - rowLength,
-              position[1] - rowLength - 1,
+              position[1] - 1,
+              position[1],
+              position[1] + rowLength,
             ];
             if (piecePositionIsValid(newPosition)) {
               // update position
@@ -369,10 +469,10 @@ class Piece {
           case 3:
             // assign new position
             newPosition = [
-              position[1] - rowLength + 1,
-              position[1],
-              position[1] + 1,
-              position[1] - 1,
+              position[2] - rowLength,
+              position[2] - 1,
+              position[2],
+              position[2] + 1,
             ];
             if (piecePositionIsValid(newPosition)) {
               // update position
@@ -383,7 +483,6 @@ class Piece {
             break;
         }
         break;
-
       default:
     }
   }
