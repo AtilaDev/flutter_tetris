@@ -37,7 +37,7 @@ class _GameBoardState extends State<GameBoard> {
   @override
   void initState() {
     super.initState();
-    playBackgroundMusic();
+    // playBackgroundMusic();
 
     // start game when ap starts
     startGame();
@@ -47,7 +47,7 @@ class _GameBoardState extends State<GameBoard> {
     currentPiece.initializePiece();
 
     // frame refreh rate
-    Duration frameRate = const Duration(milliseconds: 500);
+    Duration frameRate = const Duration(milliseconds: 300);
     gameLoop(frameRate);
   }
 
@@ -140,7 +140,11 @@ class _GameBoardState extends State<GameBoard> {
     }
   }
 
-  void rotatePiece() {}
+  void rotatePiece() {
+    setState(() {
+      currentPiece.rotatePiece();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
